@@ -15,17 +15,21 @@ breast_cancer_df = breast_cancer_df.dropna()
 # define the output as target
 target = breast_cancer_df["diagnosis"]
 
-features = breast_cancer_df[['radius_mean', 'texture_mean', 'perimeter_mean',
-    'area_mean', 'smoothness_mean', 'compactness_mean', 
-    # 'concavity_mean',
-    #    'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean',
-    #    'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se',
-    #    'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se',
-    #    'fractal_dimension_se', 'radius_worst', 'texture_worst',
-    #    'perimeter_worst', 'area_worst', 'smoothness_worst',
-    #    'compactness_worst', 'concavity_worst', 'concave points_worst',
-    #    'symmetry_worst', 'fractal_dimension_worst'
-    ]]
+# features = breast_cancer_df[['radius_mean', 'texture_mean', 'perimeter_mean',
+#     'area_mean', 'smoothness_mean', 'compactness_mean', 
+#     # 'concavity_mean',
+#     #    'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean',
+#     #    'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se',
+#     #    'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se',
+#     #    'fractal_dimension_se', 'radius_worst', 'texture_worst',
+#     #    'perimeter_worst', 'area_worst', 'smoothness_worst',
+#     #    'compactness_worst', 'concavity_worst', 'concave points_worst',
+#     #    'symmetry_worst', 'fractal_dimension_worst'
+#     ]]
+
+features = breast_cancer_df[['concave points_worst', 'perimeter_worst', 'concave points_mean',
+       'radius_worst', 'perimeter_mean', 'area_worst', 'radius_mean'
+       ]]
 
 # split the data
 X_train, X_test, y_train, y_test = train_test_split(features, target, random_state=42)
