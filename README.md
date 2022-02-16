@@ -14,3 +14,6 @@ See that the flask server is running.
 Enter  http://127.0.0.1:5000/ in the chrome browser. 
 
 Enter the required values to make prediction of whether a given population of breast tumor cells are malignant or benign. 
+
+This site uses logistic regression model as predictor. 
+The input features were optimized in a separate repo that has a link to this website.

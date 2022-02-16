@@ -27,30 +27,35 @@ target = breast_cancer_df["diagnosis"]
 #     #    'symmetry_worst', 'fractal_dimension_worst'
 #     ]]
 
-features = breast_cancer_df[['concave points_worst', 'perimeter_worst', 'concave points_mean',
-       'radius_worst', 'perimeter_mean', 'area_worst', 'radius_mean'
+features = breast_cancer_df[['perimeter_worst',
+'concave points_worst',
+'symmetry_worst',
+'smoothness_worst',
+'compactness_worst',
+'texture_worst',
+'fractal_dimension_worst'
        ]]
 
 # split the data
-X_train, X_test, y_train, y_test = train_test_split(features, target, random_state=42)
+X_train_cs, X_test_cs, y_train_cs, y_test_cs = train_test_split(features, target, random_state=42)
 
 # scale the data
-X_scaler = StandardScaler().fit(X_train)
+X_scaler_cs = StandardScaler().fit(X_train_cs)
 
 # Transform the training and testing data using the X_scaler model
-X_train_scaled = X_scaler.transform(X_train)
-X_test_scaled = X_scaler.transform(X_test)
+X_train_scaled_cs = X_scaler_cs.transform(X_train_cs)
+X_test_scaled_cs = X_scaler_cs.transform(X_test_cs)
 
 # Label-encode data set
 label_encoder = LabelEncoder()
-label_encoder.fit(y_train)
-encoded_y_train = label_encoder.transform(y_train)
-encoded_y_test = label_encoder.transform(y_test)
+label_encoder.fit(y_train_cs)
+encoded_y_train_cs = label_encoder.transform(y_train_cs)
+encoded_y_test_cs = label_encoder.transform(y_test_cs)
 
 
 # test with logistic regression
 logistic_model = LogisticRegression(random_state = 0)
-logistic_model= logistic_model.fit(X_train_scaled, encoded_y_train)
+logistic_model= logistic_model.fit(X_train_scaled_cs, encoded_y_train_cs)
 
 # Save the model to a pickle file (i.e., "pickle it")
 # so we can use it from the Flask server.
@@ -60,12 +65,10 @@ dump(logistic_model, open('logistic_model.pkl', 'wb'))
 
 # Save the scaling function to a pickle file (i.e., "pickle it")
 # so we can use it from the Flask server. 
-dump(X_scaler, open('scaler.pkl', 'wb'))
+dump(X_scaler_cs, open('scaler_cs.pkl', 'wb'))
 
 
 
-# # Load the model.
-# randomforest = load(open('randomforest.pkl', 'rb'))
 
 # # Load the scaler.
-# scaler = load(open('scaler.pkl', 'rb'))
+# scaler = load(open('scaler_cs.pkl', 'rb'))

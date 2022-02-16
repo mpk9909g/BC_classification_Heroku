@@ -20,7 +20,7 @@ model = load(open('logistic_model.pkl', 'rb'))
 # Load the scaler from its pickle file. This pickle
 # file was originally saved by the code that trained 
 # the model. See mlmodel.py for more. 
-scaler = load(open('scaler.pkl','rb'))
+scaler = load(open('scaler_cs.pkl','rb'))
 
 # Define the index route
 @app.route('/')
@@ -53,7 +53,7 @@ def predict():
     prediction = prediction_labels[prediction_encoded[0]]
 
     # Render a template that shows the result.
-    prediction_text = f'Fancy Predicted Class:  {prediction}'
+    prediction_text = f'Tumor Type:  {prediction}'
     # prediction_text = f'This is my prediction'
     # features = [10,20,30]
     return render_template('index.html', prediction_text=prediction_text, features=features)
