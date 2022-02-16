@@ -1,4 +1,6 @@
 # BC_classification_Heroku
+The purpose of this repository is to house the files necessary to process input from website users and return a prediction of Benign or Malignant.
+
 
 1.Open git bash/terminal
 
