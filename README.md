@@ -19,7 +19,7 @@ Enter the required values to make prediction of whether a given population of br
 
 ## Using the website that hosts this repo
 
-Click this link : (https://bc-predict.herokuapp.com/). Enter the required parameters and press predict. 
+Click this link : https://bc-predict.herokuapp.com/. Enter the required parameters and press predict. 
 
 This site uses *logistic regression* model as predictor with features selected based on correlation. 
 The input features were optimized in a separate **GitHub Repo** that has a link to this website. For detailed information on feature selection and machine learning model optimization please click **[here](https://github.com/mpk9909g/Breast-Cancer-Classification)** and read the ReadMe. 
